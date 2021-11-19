@@ -1,0 +1,119 @@
+#Atousa Niazi-98440127-python-time-class-OSLab-T8.2
+#if the two time samples use sub func, the func would return they Numerical difference so there would be no negative num :)
+
+class time:
+    def __init__(self,h=0,m=0,s=0):
+        self.h=h
+        self.m=m
+        self.s=s
+        self.fix()
+        
+    def show(self):
+        print(self.h,':',self.m,':',self.s,':')
+        
+    def fix(self):
+        if self.s>= 60:
+            self.s-=60
+            self.m+=1
+        elif self.s<0:
+            self.m=self.m-1
+            self.s=self.s+60
+            
+        if self.m>= 60:
+            self.m-=60
+            self.h+=1
+        elif self.m<0:
+            self.h=self.h-1
+            self.m=self.m+60
+            
+            
+    def sum_t(self,other):
+        result=time()
+        result.h=self.h+other.h
+        result.m=self.m+other.m
+        result.s=self.s+other.s
+        result.fix()
+        return result
+        
+    def sub_t(self,other):
+        result=time()
+        result.h=self.h-other.h
+        result.m=self.m-other.m
+        result.s=self.s-other.s
+        result.fix()
+        return result
+print('welcome to time class :) ')
+
+def menu():
+    print('=====================')
+    print('menu:')
+    print('1- two time samples sum')
+    print('2- two time samples sub')
+    print('3- seconds to time')
+    print('4- time to seconds')
+    print('5- exit')
+    print('=====================')
+def samples():
+    print('we need two time samples with three arguments as h, m and s')
+    print('sample')
+    print('hours:')
+    h1=int(input())
+    print('minutes:')
+    m1=int(input())
+    print('seconds:')
+    s1=int(input())
+    t=time(h1,m1,s1)
+    return t
+    
+def s_t(s_in):
+    mi=0
+    ho=0
+    if s_in>60:
+        r=s_in//60
+        s_in=s_in-r* 60
+        mi+=r
+        if mi>60:
+            r=mi//60
+            mi=mi-r* 60
+            ho+=r
+    print('\nseconds to time:  ',ho,':',mi,':',s_in)
+def t_s():
+    print('hours:')
+    h=int(input())
+    print('minutes:')
+    m=int(input())
+    print('seconds:')
+    s=int(input())
+    m=m+h*60
+    s=s+m*60
+    print('\ntime to seconds:',s)
+    
+while True:
+    menu()
+    print('your choice:')
+    c=int(input())
+    while c>5 or c==0:
+        print('try again')
+        c=int(input())
+    if c==1:
+        t1=samples()
+        t2=samples()
+        a=t1.sum_t(t2)
+        print('sum of samples:')
+        a.show()
+    elif c==2:
+        t1=samples()
+        t2=samples()
+        b=t1.sub_t(t2)
+        print('sub of samples:')
+        b.show()
+    elif c==3:
+        print('seconds:')
+        s_in=int(input())
+        s_t(s_in)
+        
+    elif c==4:
+        t_s()
+    elif c==5:
+        print('good luck!')
+        break
