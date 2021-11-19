@@ -1,0 +1,57 @@
+#Atousa Niazi-98440127-python-Complex number-OSLab-T8_3
+
+class C_N:
+    def __init__(self,n=0,i=0):
+        self.n=n
+        self.i=i
+        
+    def show(self):
+        if self.i==0:
+            print('num: (',self.n,')')
+        elif self.i>0:
+            print('num: (',self.n,end='+')
+            print(self.i,end="i )")
+        elif  self.i<0:
+            print('num: (',self.n,end='')
+            print(self.i,end="i )")
+    def Sum(self,other):
+        result=C_N()
+        result.n=self.n+other.n
+        result.i=self.i+other.i
+        return result
+    def Sub(self,other):
+        result=C_N()
+        result.n=self.n-other.n
+        result.i=self.i-other.i
+        return result
+    def Mult(self,other):
+        result=C_N()
+        result.n=self.n*other.n
+        result.i=self.i*other.n + other.i*self.n
+        return result
+###############################
+print('wellcome to Complex numbers class!')
+print('enter two numbers with two arguments for each one az x+yi')
+print('x1')
+x1=int(input())
+print('y1')
+y1=int(input())
+a=C_N(x1,y1)
+print('x2')
+x2=int(input())
+print('y2')
+y2=int(input())
+b=C_N(x2,y2)
+print('\n------------')
+d=a.Sum(b)
+print('Sum:')
+d.show()
+print('\n------------')
+e=a.Sub(b)
+print('Sub:')
+e.show()
+print('\n------------')
+f=a.Mult(b)
+print('Mult:')
+f.show()
+print('\n------------')
